@@ -56,8 +56,6 @@ spec:
       containers:
         - name: python-sample
           image: quay.io/jgoldsmith/python-sample
-          ports:
-          - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: python-sample  
