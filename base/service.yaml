@@ -19,6 +19,7 @@ spec:
     ports:
     - port: 8080
       targetPort: 8000
+      name: app-endpoint
     selector:
         app: python-sample
 ---
@@ -32,5 +33,5 @@ spec:
     name: python-sample
     weight: 100
   port:
-    targetPort: 8080
+    targetPort: app-endpoint
   wildcardPolicy: None
