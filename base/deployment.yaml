@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: arocontainerregistry.azurecr.io/mysql
+          image: registry.hub.docker.com/library/mysql
           ports:
           - containerPort: 3306
           env:
@@ -38,31 +38,27 @@ spec:
                 secretKeyRef:
                   name: mysql
                   key: database-name
-      imagePullSecrets:
-      - name: secret  
 ---
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: spring-petclinic
+  name: python-sample
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-petclinic
+      app: python-sample
   template:
     metadata:
       labels:
-        app: spring-petclinic
+        app: python-sample
     spec:
       containers:
-        - name: spring-petclinic
-          image: arocontainerregistry.azurecr.io/spring-petclinic
+        - name: python-sample
+          image: quay.io/jgoldsmith/python-sample
           ports:
           - containerPort: 8080
           envFrom:
             - configMapRef:
-                name: spring-petclinic   
-      imagePullSecrets:
-      - name: secret    
+                name: python-sample  
 

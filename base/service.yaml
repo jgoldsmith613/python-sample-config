@@ -3,7 +3,7 @@ kind: Service
 metadata:
     name: mysql
 spec:
-    type: LoadBalancer
+    type: ClusterIP
     ports:
     - port: 3306
       targetPort: 3306 
@@ -13,23 +13,23 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: spring-petclinic
+    name: python-sample
 spec:
-    type: LoadBalancer
+    type: ClusterIP
     ports:
     - port: 8080
-      targetPort: 8080
+      targetPort: 5000
     selector:
-        app: spring-petclinic
+        app: python-sample
 ---
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: spring-petclinic
+  name: python-sample
 spec:
   to:
     kind: Service
-    name: spring-petclinic
+    name: python-sample
     weight: 100
   port:
     targetPort: 8080

@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
 - ../../base/
 images:
-- name: arocontainerregistry.azurecr.io/spring-petclinic
-  newName: arocontainerregistry.azurecr.io/spring-petclinic
-  newTag: "117"
+- name: quay.io/jgoldsmith/python-sample
+  newName: quay.io/jgoldsmith/python-sample
+  newTag: "v1.0"
